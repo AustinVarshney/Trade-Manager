@@ -1,0 +1,35 @@
+.outerDataAboutDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    margin: 6rem 0;
+}
+
+.outerDataAboutDiv div{
+    width: 45%;
+}
+
+.outerDataAboutDiv div p{
+    width: 100%;
+    font-size: 1rem;
+    color: #424242;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.outerDataAboutDiv div p span{
+    color: #387ed1;
+}
+
+.outerDataAboutDiv div p span:hover{
+    color: #444;
+    cursor: pointer;
+}
+
+@media(max-width: 800px){
+    .outerDataAboutDiv div{
+        width: 100%;
+    }
+}

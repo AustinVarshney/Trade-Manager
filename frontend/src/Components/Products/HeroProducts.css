@@ -1,0 +1,41 @@
+.outerHeroProductDiv{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.outerHeroProductDiv h2{
+    color: #424242;
+    font-size: 44px;
+    margin-bottom: 1rem;
+}
+
+.innerHeroProductPara1{
+    font-size: 20px;
+    color: #424242;
+    margin-bottom: 1.2rem;
+}
+
+.innerHeroProductPara2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #424242;
+    margin-top: 0.5rem;
+}
+
+.innerHeroProductPara2 a{
+    color: #387ed1;
+    display: flex;
+    align-items: center;
+    margin-left: 0.3rem;
+}
+
+.innerHeroProductPara2 a:hover{
+    color: #444;
+    cursor: pointer;
+}

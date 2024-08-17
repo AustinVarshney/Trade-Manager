@@ -1,0 +1,14 @@
+.outerHeroPricingDiv{
+    text-align: center;
+}
+
+.outerHeroPricingDiv h4{
+    font-size: 44px;
+    color: #424242;
+    margin-bottom: 1rem;
+}
+
+.outerHeroPricingDiv p{
+    font-size: 20px;
+    color: #424242;
+}

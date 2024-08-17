@@ -1,0 +1,60 @@
+.outerRightImageDiv{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.innerRightImageDiv1, .innerRightImageDiv2{
+    width: 45%;
+}
+
+.innerRightImageDiv1 img{
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.innerRightImageDiv1 img:hover{
+    opacity: 0.8;
+}
+
+.innerRightImageDiv2 h2{
+    font-size: 2rem;
+    color: #424242;
+    margin-bottom: 1rem;
+}
+
+.innerRightImageDiv2 p{
+    font-size: 1rem;
+    color: #424242;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.innerRightImageDiv2 a{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #387ed1;
+}
+
+.innerRightImageDiv2 a:hover{
+    cursor: pointer;
+    color: #444;
+}
+
+@media(max-width:850px){
+    .innerRightImageDiv1, .innerRightImageDiv2{
+        width: 100%;
+    }
+    .outerRightImageDiv{
+        flex-direction: row;
+    }
+}

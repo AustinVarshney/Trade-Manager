@@ -1,0 +1,279 @@
+.outerNav1 {
+    /* border-bottom: 1px solid gray; */
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 2px 1px 2px #eee;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.23rem;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 10;
+}
+
+.innerNav1 a img {
+    width: 8rem;
+}
+
+.innerNav2 ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 30rem;
+}
+
+.innerNav2 ul li {
+    list-style: none;
+}
+
+.innerNav2 ul li a{
+    color: #666666;
+    font-size: 0.9rem;
+}
+
+.innerNav2 ul li button{
+    background: none;
+    border: none;
+    color: #424242;
+    cursor: pointer;
+}
+
+.innerNav2 ul li a:hover {
+    color: #387ed1;
+}
+
+.innerNav3 ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.innerNav3 ul li {
+    list-style: none;
+}
+
+.innerNav3 ul li a{
+    color: #666666;
+    font-size: 0.9rem;
+}
+
+.innerNav3 ul li button{
+    background: none;
+    border: none;
+    color: #424242;
+    cursor: pointer;
+}
+
+.innerNav3 ul li a:hover {
+    color: #387ed1;
+}
+
+.innerNav3{
+    display: none;
+}
+
+@media(max-width: 950px){
+    .innerNav2{
+        display: none;
+    }
+    .innerNav3{
+        display: inherit;
+    }
+}
+
+.outerNav2{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 4px 0.4px #eee;
+    position: fixed;
+    right: 10vw;
+    top: 4.23rem;
+    width: 43.75rem;
+    z-index: 20;
+    background-color: white;
+}
+
+.innerNav4{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.innerNav4>div{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerNav4>div>a img{
+    width: 50px;
+}
+
+.innerNav4 div>a img:hover{
+    opacity: 0.8;
+}
+
+.innerNav4 div>a h4{
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.innerNav4 div>a h4:hover{
+    color: #387ed1;
+}
+
+.innerNav4 div>a p{
+    font-size: 0.75rem;
+    color: #9b9b9b;
+}
+
+.innerNav5{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafb;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.innerNav5 div{
+    width: 45%;
+}
+
+.innerNav5 div p{
+    font-size: 1rem;
+    color: #424242;
+    margin-bottom: 1.5rem;
+}
+
+.innerNav5 div ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.innerNav5 div ul li{
+    list-style: none;
+    margin-bottom: 0.75rem;
+}
+
+
+.innerNav5 div ul li a{
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+.outerNav3{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 4px 0.4px #eee;
+    position: fixed;
+    top: 4.23rem;
+    width: 78.5%;
+    z-index: 20;
+    background-color: white;
+    margin: 0 10vw;
+}
+
+.innerNav6{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+}
+
+.innerNav6 div{
+    width: 45%;
+}
+
+.innerNav6 div p{
+    margin-bottom: 1.5rem;
+}
+
+.innerNav6 div p a{
+    font-size: 14.4px;
+    color: #444444;
+}
+
+.innerNav7{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1.5rem 0 1rem 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.innerNav7 div{
+    width: 45%;
+}
+
+.innerNav7 div p{
+    margin-bottom: 0.75rem;
+}
+
+.innerNav7 div p:hover{
+    opacity: 0.8;
+}
+
+.innerNav7 div p a{
+    font-size: 14.4px;
+    color: #444444;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.innerNav7 div p a img{
+    width: 33px;
+}
+
+.innerNav8{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.innerNav8 div{
+    width: 45%;
+}
+
+.innerNav8 div p{
+    font-size: 1rem;
+    color: #424242;
+    margin-bottom: 1.5rem;
+}
+
+.innerNav8 div ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.innerNav8 div ul li{
+    list-style: none;
+    margin-bottom: 0.75rem;
+}
+
+
+.innerNav8 div ul li a{
+    font-size: 14.4px;
+    color: #666666;
+}

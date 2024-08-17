@@ -1,0 +1,42 @@
+.heroDiv1{
+    text-align: center;
+}
+
+.heroDiv1 img{
+    width: 71%;
+    margin-top: 3.5rem;
+    margin-bottom: 2.5rem;
+    min-height: 8.153rem;
+    min-width: 19.375rem;
+}
+
+.heroDiv2{
+    text-align: center;
+}
+
+.heroDiv2 h2{
+    font-size: 2.75rem;
+    margin-bottom: 1rem;
+    color: #424242;
+}
+
+.heroDiv2 p{
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    color: #424242;
+}
+
+.heroDiv2 button{
+    height: 2.79rem;
+    width: 10.8775rem;
+    font-size: 19.2px;
+    background-color: #387ed1;
+    color: white;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+}
+
+.heroDiv2 button:hover{
+    background-color: #222;
+}

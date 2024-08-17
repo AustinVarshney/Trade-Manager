@@ -1,0 +1,23 @@
+.outerTopbarDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.innerTopbarDiv1, .innerTopbarDiv2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.innerMostTopbarDiv1, .innerMostTopbarDiv3{
+    color: #616161;
+    font-size: 12.8px;
+}
+
+.innerMostTopbarDiv2, .innerMostTopbarDiv4{
+    color: #DF4949;
+    font-size: 12.8px;
+}

@@ -1,0 +1,65 @@
+h3{
+    text-align: center;
+    font-size: 2rem;
+    color: #424242;
+    margin-bottom: 3rem;
+}
+
+.innerPeopleDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.innerPeopleDiv div{
+    width: 50%;
+}
+
+.innerMostPeopleDiv1{
+    text-align: center;
+}
+
+.innerPeopleDiv div p{
+    width: 100%;
+}
+
+.innerPeopleDiv div img{
+    border-radius: 50%;
+    width: 70%;
+}
+
+.innerParaPeople1{
+    font-size: 20px;
+    color: #424242;
+    margin: 1.5rem 0;
+}
+
+.innerParaPeople2{
+    font-size: 14.4px;
+    color: #666666;
+    margin-bottom: 2rem;
+}
+
+.innerParaPeople3{
+    font-size: 1rem;
+    color: #424242;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.innerParaPeople3 span{
+    color: #387ed1;
+}
+
+.innerParaPeople3 span:hover{
+    color: #444;
+    cursor: pointer;
+}
+
+@media(max-width: 850px){
+    .innerPeopleDiv div{
+        width: 100%;
+    }
+}

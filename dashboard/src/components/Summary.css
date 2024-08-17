@@ -1,0 +1,142 @@
+.outerSummaryDiv{
+    padding: 2rem;
+    overflow: scroll;
+    height: calc(100% - 65px);
+}
+
+.innerSummaryDiv1{
+    border-bottom: 1px solid rgb(233, 231, 231);
+    margin-top: 1rem;
+}
+
+.innerSummaryDiv1 p{
+    color: #444444;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.innerMostSummaryDiv1 p{
+    font-size: 1.2rem;
+    color: #919191;
+    font-weight: 300;
+    padding: 4rem 0;
+}
+
+.innerMostSummaryDiv2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.innerMostSummaryDiv2 div:first-child{
+    width: 30%;
+    min-width: 124px;
+    padding-left: 1rem;
+}
+
+.innerMostSummaryDiv2 div:last-child{
+    border-left: 1px solid #d4cfcf;
+    width: 40%;
+    padding-left: 2rem;
+}
+
+.innerParaSummaryDiv1{
+    font-size: 2.5rem;
+    color: #444444;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.innerParaSummaryDiv2{
+    font-size: 0.75rem;
+    color: #919191;
+}
+
+.innerParaSummaryDiv3, .innerParaSummaryDiv4{
+    font-size: 0.75rem;
+    color: #919191;
+    margin-bottom: 0.5rem;
+}
+
+.innerParaSummaryDiv3 span, .innerParaSummaryDiv4 span{
+    font-size: 1rem;
+    color: #444444;
+}
+
+.innerSummaryDiv2{
+    border-bottom: 1px solid rgb(233, 231, 231);
+    padding-bottom: 4rem;
+}
+
+.innerMostSummaryDiv3 p{
+    font-size: 1.2rem;
+    color: #919191;
+    font-weight: 300;
+    padding: 4rem 0;
+}
+
+.innerMostSummaryDiv4{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.innerMostSummaryDiv4 div:first-child{
+    width: 30%;
+    min-width: 124px;
+    padding-left: 1rem;
+}
+
+.innerMostSummaryDiv4 div:last-child{
+    border-left: 1px solid #d4cfcf;
+    width: 40%;
+    padding-left: 2rem;
+}
+
+.innerParaSummaryDiv5{
+    font-size: 2.5rem;
+    color: #444444;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: #67C988;
+}
+
+.innerParaSummaryDiv5 span{
+    color: #67C988;
+    font-size: 0.75rem;
+}
+
+.innerParaSummaryDiv6{
+    font-size: 0.75rem;
+    color: #919191;
+}
+
+.innerParaSummaryDiv7, .innerParaSummaryDiv8{
+    font-size: 0.75rem;
+    color: #919191;
+    margin-bottom: 0.5rem;
+}
+
+.innerParaSummaryDiv7 span, .innerParaSummaryDiv8 span{
+    font-size: 1rem;
+    color: #444444;
+}
+
+.innerSummaryDiv3{
+    border-bottom: 1px solid rgb(233, 231, 231);
+    padding-bottom: 4rem;
+}
+
+.outerSummaryDiv::-webkit-scrollbar{
+    height: 100%;
+    width: 8px;
+    background-color: #eeeeeedf;
+    border-radius: 1.5rem;
+}
+
+.outerSummaryDiv::-webkit-scrollbar-thumb {
+    border-radius: 1.5rem;
+    background: rgb(198, 196, 196);
+}

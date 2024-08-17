@@ -1,0 +1,95 @@
+.outerPara1{
+    font-size: 20px;
+    color: #424242;
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.outerPara1 span{
+    color: #387ed1;
+}
+
+.outerPara1 span:hover{
+    color: #444;
+    cursor: pointer;
+}
+
+.outerUniverseDiv h5{
+    font-size: 2rem;
+    color: #424242;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.outerPara2{
+    font-size: 1rem;
+    color: #424242;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.innerUniverseDiv1{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.innerUniverseDiv1 div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.innerUniverseDiv1 div div{
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.innerMostUniverseDiv1 img, .innerMostUniverseDiv2 img, .innerMostUniverseDiv3 img, .innerMostUniverseDiv4 img, .innerMostUniverseDiv5 img, .innerMostUniverseDiv6 img{
+    width: 60%;
+    margin-bottom: 1rem;
+}
+
+.innerUniverseDiv1 div div img:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.innerMostUniverseDiv1 p, .innerMostUniverseDiv2 p, .innerMostUniverseDiv3 p, .innerMostUniverseDiv4 p, .innerMostUniverseDiv5 p, .innerMostUniverseDiv6 p{
+    font-size: 12px;
+    color: #9b9b9b;
+    text-align: center;
+}
+
+@media(max-width:500px){
+    .innerUniverseDiv1 div div{
+        width: 100%;
+    }
+}
+
+.outerUniverseDiv .innerUniverseDiv2{
+    text-align: center;
+}
+
+.outerUniverseDiv .innerUniverseDiv2 button{
+    height: 2.79rem;
+    width: 10.8775rem;
+    font-size: 19.2px;
+    background-color: #387ed1;
+    color: white;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.outerUniverseDiv .innerUniverseDiv2 button:hover{
+    background-color: #222;
+}

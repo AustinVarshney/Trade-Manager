@@ -1,0 +1,57 @@
+.outerTicketDiv{
+    margin-top: 2rem;
+}
+
+.outerTicketDiv>p{
+    font-size: 22px;
+    color: #444444;
+    margin-bottom: 2rem;
+}
+
+.innerTicketDiv1, .innerTicketDiv2{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.innerTicketDiv1 div, .innerTicketDiv2 div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 30%;
+}
+
+.innerTicketDiv1 div p, .innerTicketDiv2 div p{
+    color: #222222;
+    font-size: 20px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.innerTicketDiv1 div p:hover, .innerTicketDiv2 div p:hover{
+    color: #387ed1;
+    cursor: pointer;
+}
+
+.innerTicketDiv1 div a, .innerTicketDiv2 div a{
+    color: #387ed1;
+    font-size: 14px;
+    margin-bottom: 1rem;
+    margin-left: 2.2rem;
+}
+
+.innerTicketDiv1 div a:hover, .innerTicketDiv2 div a:hover{
+    color: #666;
+}
+
+@media(max-width:750px){
+    .innerTicketDiv1 div, .innerTicketDiv2 div{
+        width: 100%;
+    }
+}

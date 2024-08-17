@@ -1,0 +1,15 @@
+.outerAboutDiv{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* height: 20rem; */
+}
+
+.outerAboutDiv ul li{
+    list-style: none;
+    font-size: 2rem;
+    color: #424242;
+    text-align: center;
+}

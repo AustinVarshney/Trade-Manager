@@ -1,0 +1,101 @@
+.outerFormDiv{
+    background-color: #387ed1;
+}
+
+.innerFormDiv1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -3rem;
+    margin-bottom: 3rem;
+}
+
+.innerFormDiv1 h4{
+    font-size: 20.4px;
+    color: #FFFFFF;
+}
+
+.innerFormDiv1 a{
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.innerFormDiv2{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.innerMostFormDiv1{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.innerMostFormDiv1 p{
+    text-align: left;
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+}
+
+.innerMostFormDiv1 input{
+    height: 58px;
+    width: 100%;
+    border-radius: 0.25rem;
+    border: none;
+    outline: none;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.innerMostFormDiv1 div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.innerMostFormDiv1 div a{
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-decoration: underline;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.innerMostFormDiv2{
+    width: 40%;
+}
+
+.innerMostFormDiv2 p{
+    color: #FFFFFF;
+    font-size: 20.4px;
+    margin-bottom: 1rem;
+}
+
+.innerMostFormDiv2 ol{
+    margin-left: 2rem;
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.innerMostFormDiv2 ol li{
+    text-decoration: underline;
+    margin-bottom: 1.5rem;
+}
+
+@media(max-width:790px){
+    .innerFormDiv2 div{
+        width: 100%;
+    }
+}

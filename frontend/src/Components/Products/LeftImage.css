@@ -1,0 +1,87 @@
+.outerLeftDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.innerLeftDiv1, .innerLeftDiv2{
+    width: 45%;
+}
+
+.innerLeftDiv1 img{
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.innerLeftDiv1 img:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.innerLeftDiv2 h2{
+    font-size: 2rem;
+    color: #424242;
+    margin-bottom: 2rem;
+}
+
+.innerLeftDiv2 p{
+    font-size: 1rem;
+    color: #424242;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.innerMostLeftDiv1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.innerMostLeftDiv1 a{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45%;
+    font-size: 1rem;
+    color: #387ed1;
+    gap: 0.5rem;
+}
+
+.innerMostLeftDiv1 a:hover{
+    color: #444;
+    cursor: pointer;
+}
+
+.innerMostLeftDiv2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.innerMostLeftDiv2 a{
+    width: 45%;
+}
+
+.innerMostLeftDiv2 a img{
+    width: 80%;
+}
+
+.innerMostLeftDiv2 a img:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media(max-width:850px){
+    .innerLeftDiv1, .innerLeftDiv2{
+        width: 100%;
+    }
+}

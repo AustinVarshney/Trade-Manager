@@ -1,0 +1,200 @@
+.outerPositionDiv{
+    padding: 2rem;
+    padding-bottom: 0;
+    overflow: scroll;
+    height: calc(100% - 30px);
+}
+
+.outerPositionDiv::-webkit-scrollbar{
+    height: 100%;
+    width: 6px;
+    background-color: #eeeeeedf;
+    border-radius: 1.5rem;
+}
+
+.outerPositionDiv::-webkit-scrollbar-thumb {
+    border-radius: 1.5rem;
+    background: rgb(198, 196, 196);
+}
+
+.position{
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.outerPositionDiv>p{
+    font-size: 1.25rem;
+    color: #444444;
+}
+
+.position tr{
+    height: 1.8rem;
+}
+
+/* .position tr th, .position tr td{
+    border: 1px solid black;
+} */
+
+.position tr th{
+    font-size: 14px;
+    color: #9B9B9B;
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+.position tr td{
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #444444;
+}
+
+.position tr .th1{
+    width: 10%;
+    text-align: left;
+}
+
+.position tr .td1{
+    width: 10%;
+    text-align: center;
+    padding: 0.5rem;
+    color: #D9863D;
+}
+
+.position tr .td1 div{
+    background-color: #D9863D1A;
+}
+
+.position tr .th2, .position tr .td2{
+    width: 30%;
+    text-align: center;
+}
+
+.position tr .th3, .position tr .td3{
+    width: 10%;
+    text-align: center;
+}
+
+.position tr .th4, .position tr .td4{
+    width: 15%;
+    text-align: right;
+}
+
+.position tr .th5, .position tr .td5{
+    width: 15%;
+    text-align: right;
+}
+
+.position tr .th6, .position tr .td6{
+    width: 10%;
+    text-align: right;
+    font-size: 14px;
+}
+
+.position tr .th7, .position tr .td7{
+    width: 10%;
+    text-align: right;
+    font-size: 12px;
+}
+
+.position thead tr{
+    border-top: none;
+}
+
+.position tbody tr:last-child{
+    border-bottom: none;
+}
+
+.positionDiv{
+    border-top: 1px solid #e7e7e7;
+    margin-top: 2rem;
+    display: none;
+}
+
+.positionOuterDiv{
+    width: 100%;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.positionOuterDiv:first-child{
+    padding-top: 0.5rem;
+}
+
+.positionOuterDiv:last-child{
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+.positionOuterDiv>div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.positionInnerDiv1{
+    margin-bottom: 1rem;
+}
+
+.positionInnerDiv1>p:first-child>span{
+    color: #c5c5c5;
+    font-size: 1rem;
+}
+
+.positionInnerDiv2{
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.positionInnerDiv2>p{
+    font-size: 1rem;
+    color: #444444;
+}
+
+.positionPara2>span{
+    font-size: 10px;
+}
+
+.positionPara4{
+    position: absolute;
+    left: calc(45% - 5px);
+}
+
+.positionPara5>span{
+    font-size: 12px;
+}
+
+.positionInnerDiv3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.positionPara6{
+    font-size: 1rem;
+    color: #adadad;
+    position: absolute;
+    top: 0;
+    left: calc(45% - 5px);
+    margin-top: 0.5rem;
+}
+
+.positionPara7{
+    position: absolute;
+    left: calc(45% - 5px);
+    top: 1rem;
+    margin-top: 1rem;
+}
+
+@media(max-width:620px){
+    .position{
+        display: none;
+    }
+    .positionDiv{
+        display: inherit;
+    }
+}

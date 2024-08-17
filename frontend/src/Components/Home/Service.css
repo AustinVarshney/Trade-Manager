@@ -1,0 +1,95 @@
+.serviceOuterDiv{
+    margin-top: 6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+@media(max-width: 1200px){
+    .serviceOuterDiv div{
+        width: 100%;
+    }
+}
+
+.innerServiceDiv1{
+    width: 35%;
+}
+
+.innerServiceDiv1 div{
+    width: 100%;
+}
+
+.innerServiceDiv1 h2{
+    font-size: 2rem;
+    color: #424242;
+    margin-bottom: 3rem;
+}
+
+.innerServiceDiv1 div h4{
+    font-size: 1.5rem;
+    color: #424242;
+    margin-bottom: 1rem;
+}
+
+.innerServiceDiv1 div p{
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 2rem;
+    line-height: 1.75rem;
+}
+
+.innerServiceDiv1 div p span{
+    color: #387ed1;
+    cursor: pointer;
+}
+
+.innerServiceDiv1 div p span:hover{
+    color: #424242;
+}
+
+.innerServiceDiv2{
+    width: 55%;
+}
+
+.innerServiceDiv2 div{
+    width: 100%;
+}
+
+.innerMostDiv1{
+    text-align: center;
+}
+
+.innerServiceDiv2 div img{
+    width: 100%;
+    max-width: 556.42px;
+    max-height: 546.4px;
+}
+
+.innerMostDiv2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: #387ed1;
+    gap: 2.5rem;
+}
+
+@media(max-width: 460px){
+    .innerMostDiv2{
+        gap: 1rem;
+    }
+}
+
+.innerMostDiv2 p{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    gap: 0.25rem;
+}
+
+.innerMostDiv2 p:hover{
+    color: #424242;
+    cursor: pointer;
+}

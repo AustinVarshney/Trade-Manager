@@ -1,0 +1,79 @@
+.outerHeroSignupDiv{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -6rem;
+}
+
+.outerHeroSignupDiv>div{
+    width: 45%;
+}
+
+.innerHeroSignupDiv1 img{
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.innerHeroSignupDiv2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.innerHeroSignupDiv2>h3{
+    font-size: 28px;
+    color: #424242;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
+
+.innerHeroSignupDiv2>form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.innerHeroSignupDiv2>form>.SignupBox1{
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.innerHeroSignupDiv2>form>.SignupBox2{
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.innerHeroSignupDiv2>form>.SignupBox3{
+    width: 80%;
+    margin-bottom: 2rem;
+}
+
+.innerHeroSignupDiv2>form>button{
+    height: 2.79rem;
+    width: 10.8775rem;
+    font-size: 19.2px;
+    background-color: #387ed1;
+    color: white;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+}
+
+.innerHeroSignupDiv2>form>button:hover{
+    background-color: #222;
+}
+
+@media(max-width:800px){
+    .outerHeroSignupDiv>div{
+        width: 100%;
+    }
+}
