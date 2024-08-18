@@ -6,11 +6,6 @@ import Order from '../components/Order'
 import axios from 'axios';
 
 const Orders = () => {
-  useEffect(() => {
-    axios.get("http://localhost:8080/").then((res) => {
-      // console.log(res);
-    })
-  }, [])
 
   return (
     <div className='outerHomeDiv'>

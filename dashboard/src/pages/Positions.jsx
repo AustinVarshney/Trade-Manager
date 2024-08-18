@@ -6,11 +6,6 @@ import Position from "../components/Position"
 import axios from 'axios';
 
 const Positions = () => {
-  useEffect(() => {
-    axios.get("http://localhost:8080/").then((res) => {
-      // console.log(res);
-    })
-  }, [])
 
   return (
     <div className='outerHomeDiv'>

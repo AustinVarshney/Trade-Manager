@@ -6,11 +6,6 @@ import AppCompo from '../components/AppCompo'
 import axios from 'axios'
 
 const Apps = () => {
-  useEffect(() => {
-    axios.get("http://localhost:8080/").then((res) => {
-      // console.log(res);
-    })
-  }, [])
 
   return (
     <div className='outerHomeDiv'>

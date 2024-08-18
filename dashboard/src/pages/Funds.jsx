@@ -6,11 +6,6 @@ import Fund from '../components/Fund'
 import axios from 'axios';
 
 const Funds = () => {
-  useEffect(() => {
-    axios.get("http://localhost:8080/").then((res) => {
-      // console.log(res);
-    })
-  }, [])
 
   return (
     <div className='outerHomeDiv'>
