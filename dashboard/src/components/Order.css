@@ -1,24 +1,89 @@
-.outerOrderDiv{
-    padding-top: 2rem;
-    height: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+.outerOrderDiv1{
+    padding: 2rem;
+    padding-bottom: 0;
+    overflow: scroll;
+    height: calc(100% - 30px);
+    text-align: center;
 }
 
-.outerOrderDiv img{
+.outerOrderDiv1::-webkit-scrollbar{
+    height: 100%;
+    width: 6px;
+    background-color: #eeeeeedf;
+    border-radius: 1.5rem;
+}
+
+.outerOrderDiv2{
+    text-align: center;
+}
+
+.outerOrderDiv3{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orderTable{
+    width: 100%;
+    text-align: center;
+}
+
+.orderTable>thead, .orderTable>tbody{
+    width: 100%;
+}
+
+.orderTable>thead>tr>th{
+    font-size: 14px;
+    color: #9B9B9B;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-right: 1px solid rgb(233, 231, 231);
+    border-bottom: 1px solid rgb(233, 231, 231);
+}
+
+.orderTable>thead>tr>th:last-child{
+    border-right: none;
+}
+
+.orderTable>tbody>tr>td{
+    color: rgba(0, 0, 0, 0.634);
+    font-weight: 500;
+    padding: 0.5rem;
+    border-right: 1px solid rgb(233, 231, 231);
+    border-bottom: 1px solid rgb(233, 231, 231);
+}
+
+.orderTable>tbody>tr>td:last-child{
+    border-right: none;
+}
+
+.orderTable>tbody>tr>td>button{
+    color: whitesmoke;
+    width: 6rem;
+    height: 1.8rem;
+    background-color: rgb(241, 58, 58);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.orderTable>tbody>tr>td>button:hover{
+    background-color: rgba(246, 69, 69, 0.86);
+}
+
+.outerOrderDiv1>.outerOrderDiv3>img{
     height: 15%;
 }
 
-.outerOrderDiv p{
+.outerOrderDiv1>.outerOrderDiv3>p{
     font-size: 18px;
     color: #868484;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
 }
 
-.outerOrderDiv button{
+.outerOrderDiv1>.outerOrderDiv3>button{
     width: 6rem;
     height: 2rem;
     background-color: rgb(69, 69, 244);
@@ -27,11 +92,25 @@
     border: 1px solid blue;
 }
 
-.outerOrderDiv button:hover{
+.outerOrderDiv1>.outerOrderDiv3>button:hover{
     background-color: rgba(69, 69, 244, 0.86);
 }
 
-.outerOrderDiv button a{
+.outerOrderDiv1>.outerOrderDiv3>button>a{
     color: white;
     text-decoration: none;
+}
+
+@media(max-width: 450px){
+    .outerOrderDiv1{
+        padding: 2rem  0.5rem;
+        padding-bottom: 0;
+    }
+}
+
+@media(max-width: 330px){
+    .outerOrderDiv1{
+        padding: 2rem 0;
+        padding-bottom: 0;
+    }
 }

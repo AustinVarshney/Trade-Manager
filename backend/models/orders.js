@@ -6,6 +6,10 @@ let orderSchema = new Schema({
     qty: Number,
     price: Number,
     mode: String,
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    }
 })
 
 const Order = mongoose.model("Order", orderSchema);

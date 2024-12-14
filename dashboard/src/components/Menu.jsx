@@ -11,7 +11,6 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import KeyboardCommandKeyIcon from '@mui/icons-material/KeyboardCommandKey';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import LogoutIcon from '@mui/icons-material/Logout';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const Menu = () => {
@@ -67,11 +66,6 @@ const Menu = () => {
 
   const menu = "menu";
   const selectedMenu = "selected-menu";
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:8080/").then((res) => {
-  //   })
-  // }, [])
 
   return (
     <div className='outerMenuDiv'>

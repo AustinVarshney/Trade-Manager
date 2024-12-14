@@ -10,9 +10,11 @@ const ExpressError = require("./utils/ExpressError.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const bodyParser = require('body-parser');
 
 const Holding = require("./models/holdings.js");
 const Position = require("./models/positions.js");
+const Order = require("./models/orders.js");
 const User = require("./models/user.js");
 const cookieParser = require("cookie-parser");
 
@@ -20,16 +22,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-    origin: ["http://localhost:5173/", "http://localhost:5174/"],
-    methods: "GET,POST",
+    origin: ["http://localhost:5173", "http://localhost:5174"],
+    methods: "GET,POST,DELETE",
+    allowedHeaders: "Content-Type",
     credentials: true,
 }));
 
 app.options('*', cors({
     origin: ["http://localhost:5173/", "http://localhost:5174/"],
-    methods: "GET,POST",
+    methods: "GET,POST,DELETE",
     credentials: true,
 }));
+
+app.use(bodyParser.json());
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/zerodha";
 const DB_URL = process.env.MONGODB_URL;
@@ -92,6 +97,12 @@ app.use((req, res, next) => {
     }
 })
 
+function isAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.status(401).send("Issue with Authentication");
+}
 
 app.get("/", (req, res) => {
     res.json({ msg: "Hello" });
@@ -107,18 +118,68 @@ app.get("/allPositions", wrapAsync(async (req, res) => {
     res.json(allPositions);
 }));
 
-app.post("/signup", async (req, res) => {
+app.get("/allOrders", isAuthenticated, wrapAsync(async (req, res) => {
+    const ownerId = req.user._id.toString();
+
+    let allOrders = await Order.find({owner: ownerId});
+    res.json(allOrders);
+}));
+
+app.post("/buyOrders", isAuthenticated, wrapAsync(async (req, res) => {      //Done
+    let {qty, price, itemName, itemMode} = req.body;
+
+    const ownerId = req.user._id.toString();
+    console.log("Owner ID:", ownerId);
+
+    const order = new Order({
+        name: itemName,
+        qty: qty,
+        price: price,
+        mode: itemMode,
+        owner: ownerId,
+    });
+    await order.save();
+    console.log(qty, price, itemName, itemMode, ownerId);
+    res.set('Access-Control-Allow-Origin', '*');
+}));
+
+app.post("/sellOrders", isAuthenticated, wrapAsync(async (req, res) => {     //Done
+    let {qty, price, itemName, itemMode} = req.body;
+
+    const ownerId = req.user._id.toString();
+    console.log("Owner ID:", ownerId);
+
+    const order = new Order({
+        name: itemName,
+        qty: qty,
+        price: price,
+        mode: itemMode,
+        owner: ownerId,
+    });
+    await order.save();
+    console.log(qty, price, itemName, itemMode, ownerId);
+    res.set('Access-Control-Allow-Origin', '*');
+}));
+
+app.delete("/deleteOrder/:id", wrapAsync(async(req, res) => {
+    let {id} = req.params;
+    let deletedOrder = await Order.findByIdAndDelete(id);
+    console.log(deletedOrder);
+    res.status(200).json({ message: "Order deleted successfully" });
+}));
+
+app.post("/signup", wrapAsync(async (req, res) => {
     let { email, username, password } = req.body;
     const newUser = new User({ email, username });
     const registeredUser = await User.register(newUser, password);
     console.log(registeredUser);
     res.cookie("user", username);
     res.redirect("http://localhost:5173/");
-})
+}));
 
-app.get("/login", (req, res) => {
+app.get("/login", wrapAsync((req, res) => {
     res.redirect("http://localhost:5173/login");
-})
+}));
 
 app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }), wrapAsync(async (req, res) => {
     if (!req.isAuthenticated()) {
@@ -147,7 +208,6 @@ app.get("/logout", (req, res) => {
         res.redirect("http://localhost:5174/");
     })
 });
-
 
 app.all("*", (req, res, next) => {
     throw new ExpressError(404, "Page Not Found!");

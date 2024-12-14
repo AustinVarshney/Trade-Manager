@@ -1,8 +1,78 @@
 import React, { useEffect, useState } from 'react'
+import Draggable from "react-draggable";
 import "./Summary.css"
+import TextField from '@mui/material/TextField';
+import axios from 'axios';
 
 
-const Summary = ({user}) => {
+const Summary = ({ user, itemName, itemMode, isCancelBuyBtn, isCancelSellBtn, mediaCancelBuyBtn, mediaCancelSellBtn }) => {
+  let [qty, setQty] = useState("");
+  let [price, setPrice] = useState("");
+
+  let qtyValue = (event) => {
+    setQty(event.target.value);
+  }
+
+  let priceValue = (event) => {
+    setPrice(event.target.value);
+  }
+
+  const handleBuyClick = (event) => {
+    event.preventDefault();
+
+    setQty("");
+    setPrice("");
+
+    const data = { qty, price, itemName, itemMode };
+
+    fetch('http://localhost:8080/buyOrders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    }).then(response => {
+      if (!response.ok) {
+        const errorText = response.text();
+        throw new Error(errorText);
+      }
+      return response.json();
+    })
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+
+
+    mediaCancelBuyBtn();
+  };
+
+  const handleSellClick = (event) => {
+    event.preventDefault();
+
+    setQty("");
+    setPrice("");
+
+    const data = { qty, price, itemName, itemMode };
+
+    fetch('http://localhost:8080/sellOrders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    }).then(response => {
+      if (!response.ok) {
+        const errorText = response.text();
+        throw new Error(errorText);
+      }
+      return response.json();
+    })
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+
+    mediaCancelSellBtn();
+  };
 
   return (
     <div className='outerSummaryDiv'>
@@ -39,6 +109,47 @@ const Summary = ({user}) => {
           </div>
         </div>
       </div>
+
+      {isCancelBuyBtn && (
+        <Draggable>
+          <div className="dialog-box">
+            <div className='dbox1'>
+              <TextField label="Qty." type="number" min="0" name='qty' InputLabelProps={{ shrink: true, }} style={{ width: "100px" }} value={qty} onChange={qtyValue} />
+              <TextField label="Price" type="number" step="any" min="0" name='price' InputLabelProps={{ shrink: true, }} style={{ width: "100px" }} value={price} onChange={priceValue} />
+            </div>
+            <div className='dbox2'>
+              <div className='innerDbox21'>
+                <p>Margin Required: &#x20b9;{qty == "" || price == "" ? "0" : qty * price}</p>
+              </div>
+              <div className='innerDbox22'>
+                <button onClick={handleBuyClick}>BUY</button>
+                <button onClick={mediaCancelBuyBtn}>Cancel</button>
+              </div>
+            </div>
+
+          </div>
+        </Draggable>
+      )}
+
+      {isCancelSellBtn && (
+        <Draggable>
+          <div className="dialog-box">
+            <div className='dbox1'>
+              <TextField label="Qty." type="number" min="0" InputLabelProps={{ shrink: true, }} style={{ width: "100px" }} value={qty} onChange={qtyValue} />
+              <TextField label="Price" type="number" step="any" min="0" InputLabelProps={{ shrink: true, }} style={{ width: "100px" }} value={price} onChange={priceValue} />
+            </div>
+            <div className='dbox2'>
+              <div className='innerDbox21'>
+                <p>Margin Required: &#x20b9;{qty == "" || price == "" ? "0" : qty * price}</p>
+              </div>
+              <div className='innerDbox22'>
+                <button onClick={handleSellClick} style={{ backgroundColor: "#ff4600" }}>SELL</button>
+                <button onClick={mediaCancelSellBtn}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        </Draggable>
+      )}
     </div>
   )
 }

@@ -13,8 +13,18 @@ import { CategoryScale } from "chart.js";
 
 Chart.register(CategoryScale);
 
-const Watchlist = () => {
+const Watchlist = ({sendDataToParent, mediaBuyBtn, mediaSellBtn }) => {
   let [content, setContent] = useState("");
+
+  const toggleDialogBuy = (name, option) => {
+    sendDataToParent(name, option);
+    mediaBuyBtn();
+  };
+
+  const toggleDialogSell = (name, option) => {
+    sendDataToParent(name, option);
+    mediaSellBtn();
+  };
 
   let userInput = (event) => {
     setContent(event.target.value);
@@ -79,10 +89,10 @@ const Watchlist = () => {
               </div>
               <div className="innerMostWatchlistDiv3" style={hoveredIndex === index ? {} : { display: "none" }}>
                 <button style={{ backgroundColor: "#0070ff", color: "white" }}>
-                  <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Buy (B)">Buy</a>
+                  <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Buy (B)" onClick={() => toggleDialogBuy(item.name, "BUY")}>Buy</a>
                 </button>
                 <button style={{ backgroundColor: "#ff4600", color: "white" }}>
-                  <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Sell (S)">Sell</a>
+                  <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Sell (S)" onClick={() => toggleDialogSell(item.name, "SELL")}>Sell</a>
                 </button>
                 <button style={{ backgroundColor: "white", color: "gray", border: "0.5px solid gray", }}>
                   <a data-tooltip-id="my-tooltip-2" data-tooltip-content="Analytics (A)"><BarChartIcon style={{ display: "flex" }} /></a>
@@ -115,10 +125,10 @@ const Watchlist = () => {
                 </div>
                 <div className="innerMostWatchlistDiv3" style={hoveredIndex === index ? {} : { display: "none" }}>
                   <button style={{ backgroundColor: "#0070ff", color: "white" }}>
-                    <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Buy (B)">Buy</a>
+                    <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Buy (B)" onClick={() => toggleDialogBuy(item.name, "BUY")}>Buy</a>
                   </button>
                   <button style={{ backgroundColor: "#ff4600", color: "white" }}>
-                    <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Sell (S)">Sell</a>
+                    <a data-tooltip-id="my-tooltip-1" data-tooltip-content="Sell (S)" onClick={() => toggleDialogSell(item.name, "SELL")}>Sell</a>
                   </button>
                   <button style={{ backgroundColor: "white", color: "gray", border: "0.5px solid gray", }}>
                     <a data-tooltip-id="my-tooltip-2" data-tooltip-content="Analytics (A)"><BarChartIcon style={{ display: "flex" }} /></a>

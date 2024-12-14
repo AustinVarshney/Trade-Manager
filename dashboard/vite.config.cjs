@@ -8,5 +8,12 @@ module.exports = defineConfig({
   },
   server: {
     historyApiFallback: true, // This is typically for dev mode but let's ensure it's set.
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ''),
+      },
+    },
   }
 });

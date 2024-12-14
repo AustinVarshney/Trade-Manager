@@ -34,78 +34,78 @@ tr{
     border-bottom: 1px solid rgb(233, 231, 231);
 }
 
-.holding tr:last-child{
+.holding>tbody>tr:last-child{
     border-bottom: 0;
 }
-.holding tr:first-child{
+.holding>tbody>tr:first-child{
     border-top: 0;
     border-bottom: 1px solid rgb(233, 231, 231);
 }
 
-.holding tr th{
+.holding>thead>tr>th{
     font-size: 14px;
     color: #9B9B9B;
     font-weight: 400;
     padding: 0.5rem;
 }
 
-.holding tr th:hover{
+.holding>thead>tr>th:hover{
     background-color: rgb(234, 234, 234);
     cursor: pointer;
 }
 
-.holding tr td{
+.holding>tbody>tr>td{
     padding: 0.5rem;
     font-size: 1rem;
     color: #444444;
 }
 
-.holding tr .th1, .holding tr .td1{
+.holding>thead>tr .th1, .holding>tbody>tr>.td1{
     width: 20%;
     text-align: left;
     border-right: 1px solid rgb(233, 231, 231);
 }
 
-.holding tr .th2, .holding tr .td2{
+.holding>thead>tr .th2, .holding>tbody>tr>.td2{
     width: 10%;
     text-align: center;
 }
 
-.holding tr .th3, .holding tr .td3{
+.holding>thead>tr .th3, .holding>tbody>tr>.td3{
     width: 15%;
     text-align: center;
 }
 
-.holding tr .th4, .holding tr .td4{
+.holding>thead>tr .th4, .holding>tbody>tr>.td4{
     width: 10%;
     text-align: right;
     border-right: 1px solid rgb(233, 231, 231);
 }
 
-.holding tr .th5, .holding tr .td5{
+.holding>thead>tr .th5, .holding>tbody>tr>.td5{
     width: 15%;
     text-align: right;
 }
 
-.holding tr .th6, .holding tr .td6{
+.holding>thead>tr .th6, .holding>tbody>tr>.td6{
     width: 10%;
     text-align: right;
 }
 
-.holding tr .td7{
+.holding>tbody>tr>.td7{
     font-size: 14px;
 }
 
-.holding tr .th7, .holding tr .td7{
+.holding>thead>tr .th7, .holding>tbody>tr>.td7{
     width: 10%;
     text-align: right;
 }
 
-.holding tr .td8{
+.holding>tbody>tr .td8{
     font-size: 12px;
 }
 
-.holding tr .th8, .holding tr .td8{
+.holding>thead>tr .th8, .holding>tbody>tr>.td8{
     width: 10%;
     text-align: right;
 }

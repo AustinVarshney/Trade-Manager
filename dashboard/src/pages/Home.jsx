@@ -8,10 +8,35 @@ import Cookies from 'js-cookie';
 
 const Home = () => {
   let [user, setUser] = useState("User");  
+  let [itemDataName, setItemDataName] = useState("");
+  let [itemDataMode, setItemDataMode] = useState("");
+  let [isCancelBuyBtn, setIsCancelBuyBtn] = useState(false);
+  let [isCancelSellBtn, setIsCancelSellBtn] = useState(false);
+
+  let mediaBuyBtn = () => {
+    setIsCancelBuyBtn(true);
+  }
+
+  let mediaSellBtn = () => {
+    setIsCancelSellBtn(true);
+  }
+
+  let mediaCancelBuyBtn = () => {
+    setIsCancelBuyBtn(false)
+  }
+
+  let mediaCancelSellBtn = () => {
+    setIsCancelSellBtn(false)
+  }
+
+
+  let getItemData = (name, option) => {
+    setItemDataName(name);
+    setItemDataMode(option);
+  }
 
   useEffect(() => {
     const userName = Cookies.get('user');
-    // console.log(userName);
     if (userName) {
       setUser(userName || "User");
     }
@@ -25,7 +50,7 @@ const Home = () => {
           <Topbar />
         </div>
         <div className='innerMostHomeDiv2'>
-          <Watchlist />
+          <Watchlist sendDataToParent={getItemData} mediaBuyBtn={mediaBuyBtn} mediaSellBtn={mediaSellBtn}/>
         </div>
       </div>
       <div className='innerHomeDiv2'>
@@ -33,7 +58,7 @@ const Home = () => {
           <Menu user={user}/>
         </div>
         <div className='innerMostHomeDiv4'>
-          <Summary user={user} />
+          <Summary user={user} itemName={itemDataName} itemMode={itemDataMode} isCancelBuyBtn={isCancelBuyBtn} isCancelSellBtn={isCancelSellBtn} mediaCancelBuyBtn={mediaCancelBuyBtn} mediaCancelSellBtn={mediaCancelSellBtn}/>
         </div>
       </div>
     </div>
