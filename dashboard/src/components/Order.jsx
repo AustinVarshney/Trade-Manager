@@ -38,11 +38,14 @@ const Order = () => {
   }, [])
 
   const handleDelete = async (id) => {
-    const response = await fetch(`http://localhost:8080/deleteOrder/${id}`, {
-      method: 'DELETE',
-    });
-    if (response.ok) {
-      setAllOrders(allOrders.filter(order => order._id !== id));
+    const isConfirmed = window.confirm("Are you sure you want to delete this order?");
+    if (isConfirmed) {
+      const response = await fetch(`http://localhost:8080/deleteOrder/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setAllOrders(allOrders.filter(order => order._id !== id));
+      }
     }
   }
 

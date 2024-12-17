@@ -17,6 +17,11 @@ const Position = require("./models/positions.js");
 const Order = require("./models/orders.js");
 const User = require("./models/user.js");
 const cookieParser = require("cookie-parser");
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+const WebSocket = require('ws');
+
+const wss = new WebSocket.Server({ port: 8081 });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -97,11 +102,68 @@ app.use((req, res, next) => {
     }
 })
 
+
+wss.on('connection', (ws) => {
+    console.log('Client connected');
+
+    ws.on('message', (message) => {
+        console.log(`Received message => ${message}`);
+    });
+
+    ws.on('close', () => {
+        console.log('Client disconnected');
+    });
+
+    // Example of sending a message to the client
+    ws.send(JSON.stringify({ message: 'Welcome to the WebSocket server!' }));
+});
+
+console.log('WebSocket server is running on ws://localhost:8081');
+
+const ws = new WebSocket('ws://localhost:8081');
+
+ws.onopen = () => {
+    console.log('Connected to WebSocket server for verification');
+
+    // Function to call after email verification
+    function onEmailVerified() {
+        ws.send(JSON.stringify({ verified: true }));
+    }
+
+    // Simulate email verification
+    onEmailVerified;
+};
+
+ws.onclose = () => {
+    console.log('Disconnected from WebSocket server');
+};
+
+function generateToken() {
+    return crypto.randomBytes(32).toString('hex');
+}
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+});
+
+async function sendVerificationEmail(email, link) {
+    await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'Verify your email',
+        text: `Please verify your email by clicking the following link: ${link}`,
+    });
+}
+
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.status(401).send("Issue with Authentication");
+    res.status(401).send("Authentication or verification issue.");
 }
 
 app.get("/", (req, res) => {
@@ -121,12 +183,12 @@ app.get("/allPositions", wrapAsync(async (req, res) => {
 app.get("/allOrders", isAuthenticated, wrapAsync(async (req, res) => {
     const ownerId = req.user._id.toString();
 
-    let allOrders = await Order.find({owner: ownerId});
+    let allOrders = await Order.find({ owner: ownerId });
     res.json(allOrders);
 }));
 
 app.post("/buyOrders", isAuthenticated, wrapAsync(async (req, res) => {      //Done
-    let {qty, price, itemName, itemMode} = req.body;
+    let { qty, price, itemName, itemMode } = req.body;
 
     const ownerId = req.user._id.toString();
     console.log("Owner ID:", ownerId);
@@ -144,7 +206,7 @@ app.post("/buyOrders", isAuthenticated, wrapAsync(async (req, res) => {      //D
 }));
 
 app.post("/sellOrders", isAuthenticated, wrapAsync(async (req, res) => {     //Done
-    let {qty, price, itemName, itemMode} = req.body;
+    let { qty, price, itemName, itemMode } = req.body;
 
     const ownerId = req.user._id.toString();
     console.log("Owner ID:", ownerId);
@@ -161,20 +223,66 @@ app.post("/sellOrders", isAuthenticated, wrapAsync(async (req, res) => {     //D
     res.set('Access-Control-Allow-Origin', '*');
 }));
 
-app.delete("/deleteOrder/:id", wrapAsync(async(req, res) => {
-    let {id} = req.params;
+app.delete("/deleteOrder/:id", wrapAsync(async (req, res) => {
+    let { id } = req.params;
     let deletedOrder = await Order.findByIdAndDelete(id);
     console.log(deletedOrder);
     res.status(200).json({ message: "Order deleted successfully" });
 }));
 
 app.post("/signup", wrapAsync(async (req, res) => {
-    let { email, username, password } = req.body;
-    const newUser = new User({ email, username });
+    // let { email, username, password } = req.body;
+    // const newUser = new User({ email, username });
+    // const registeredUser = await User.register(newUser, password);
+    // console.log(registeredUser);
+    // res.cookie("user", username);
+    // res.redirect("http://localhost:5173/");
+
+    const { email, username, password } = req.body;
+    const token = generateToken();
+
+    const newUser = new User({ email, username, verificationToken: token });
     const registeredUser = await User.register(newUser, password);
     console.log(registeredUser);
-    res.cookie("user", username);
-    res.redirect("http://localhost:5173/");
+
+    const verificationLink = `http://localhost:8080/verify-email?token=${token}`;
+    await sendVerificationEmail(email, verificationLink);
+
+    // Log the user in immediately after signup
+    req.login(registeredUser, (err) => {
+        if (err) {
+            console.error('Error during login after signup:', err);
+            return res.status(500).send('Error during login after signup.');
+        }
+
+        // Set the cookie for the logged-in user
+        res.cookie("user", username, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+
+        // Redirect to the verification page
+        res.redirect("http://localhost:5174/verification");
+    });
+}));
+
+app.get('/verify-email', wrapAsync(async (req, res) => {
+    const { token } = req.query;
+    const user = await User.findOne({ verificationToken: token });
+
+    if (!user) {
+        return res.status(400).send('Invalid or expired token.');
+    }
+
+    user.isVerified = true;
+    user.verificationToken = undefined; // Clear the token
+    await user.save();
+
+    // Send a message to the WebSocket server
+    wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify({ redirect: true }));
+        }
+    });
+
+    res.send('Email verified successfully!');
 }));
 
 app.get("/login", wrapAsync((req, res) => {
@@ -183,21 +291,16 @@ app.get("/login", wrapAsync((req, res) => {
 
 app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }), wrapAsync(async (req, res) => {
     if (!req.isAuthenticated()) {
-        res.redirect("http://localhost:8080/login");
-    } else {
-        // // Assuming req.user contains the authenticated user data
-        // req.session.hasReloaded = req.session.hasReloaded || false;
-
-        // if (!req.session.hasReloaded) {
-        //     // Set the hasReloaded flag and respond accordingly
-        //     req.session.hasReloaded = true;
-        //     res.setHeader('X-Second-Reload', 'true');
-        // }
-
-        let userData = req.user.username || "Guest";
-        res.cookie('user', userData, {secure: isProduction, sameSite: isProduction ? 'none' : 'lax'});
-        res.redirect('http://localhost:5173/');
+        res.redirect("http://localhost:5173/login");
     }
+    if (!req.user.isVerified) {
+        console.log("Account not verified. Please check your email for verification instructions.");
+        return res.status(403).redirect("http://localhost:5173/login");
+    }
+
+    let userData = req.user.username || "Guest";
+    res.cookie('user', userData, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+    res.redirect('http://localhost:5173/');
 }));
 
 app.get("/logout", (req, res) => {
@@ -205,7 +308,13 @@ app.get("/logout", (req, res) => {
         if (err) {
             return next(err);
         }
-        res.redirect("http://localhost:5174/");
+        req.session.destroy((err) => {
+            if (err) {
+                return next(err);
+            }
+            res.clearCookie('connect.sid', { path: '/' }); // Clear the session cookie
+            res.redirect("http://localhost:5174/");
+        });
     })
 });
 
