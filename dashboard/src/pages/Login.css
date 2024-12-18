@@ -26,6 +26,7 @@
     justify-content: center;
     min-width: 250px;
     max-width: 320px;
+    width: 100%;
     background-color: white;
     border-radius: 0.25rem;
 }
@@ -45,11 +46,6 @@
     margin-top: 2rem;
 }
 
-.innerLoginDiv1{
-    text-decoration: none;
-    width: 100%;
-}
-
 .innerLoginDiv1>button{
     width: 100%;
     font-size: 1rem;
@@ -65,4 +61,32 @@
 .innerLoginDiv1>button:hover{
     background-color: #fa6d42;
     cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .outerLoginDiv > form {
+        width: 80%; /* Increase width for medium screens */
+    }
+
+    .innerLoginDiv1 {
+        padding: 1.5rem; /* Reduce padding */
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .outerLoginDiv > form {
+        width: 85%; /* Full width for smaller screens */
+    }
+
+    .innerLoginDiv1 {
+        padding: 1rem; /* Reduce padding further */
+        max-width: 90%; /* Set maximum width relative to screen */
+    }
+
+    .innerLoginDiv1 > button {
+        font-size: 0.9rem; /* Reduce button font size */
+        height: 2.2rem; /* Reduce button height */
+    }
 }

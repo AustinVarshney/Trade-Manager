@@ -4,8 +4,7 @@ import "./Verification.css"
 const Verification = () => {
   return (
     <div className='verification-div'>
-      <h1>Testing</h1>
-      <p>Check your email. We have sent for its verification.</p>
+      <p>We have sent you an email for its verification. Please click on the link attached and you are redirected to the dashboard.</p>
     </div>
   )
 }

@@ -82,7 +82,7 @@ const Order = () => {
         :
         <div className='outerOrderDiv3'>
           <img src={bookImg} />
-          <p>You haven't placed any orders today</p>
+          <p>You haven't placed any orders</p>
           <button><a href='#'>Get started</a></button>
         </div>}
 

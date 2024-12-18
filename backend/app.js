@@ -289,19 +289,52 @@ app.get("/login", wrapAsync((req, res) => {
     res.redirect("http://localhost:5173/login");
 }));
 
-app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }), wrapAsync(async (req, res) => {
-    if (!req.isAuthenticated()) {
-        res.redirect("http://localhost:5173/login");
-    }
-    if (!req.user.isVerified) {
-        console.log("Account not verified. Please check your email for verification instructions.");
-        return res.status(403).redirect("http://localhost:5173/login");
-    }
+// app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }), wrapAsync(async (req, res) => {
+//     if (!req.isAuthenticated()) {
+//         return res.status(401).send("Account or password is incorrect");
+//     }
+//     if (!req.user.isVerified) {
+//         return res.status(403).send("Account not verified");
+//     }
 
-    let userData = req.user.username || "Guest";
-    res.cookie('user', userData, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
-    res.redirect('http://localhost:5173/');
-}));
+//     let userData = req.user.username || "Guest";
+//     res.cookie('user', userData, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+//     res.status(200).send("Login successful");
+//     // res.redirect('http://localhost:5173/');
+// }));
+
+app.post("/login", (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+        if (err) {
+            console.error("Error during authentication:", err);
+            return res.status(500).send("Server error during authentication.");
+        }
+
+        if (!user) {
+            // Authentication failed: Invalid username or password
+            return res.status(401).send("Account or password is incorrect");
+        }
+
+        // Check if the user's account is verified
+        if (!user.isVerified) {
+            return res.status(403).send("Account not verified");
+        }
+
+        // Log in the user and set session
+        req.logIn(user, (err) => {
+            if (err) {
+                console.error("Error logging in the user:", err);
+                return res.status(500).send("Error logging in. Please try again.");
+            }
+
+            // Login successful
+            let userData = user.username || "Guest";
+            res.cookie("user", userData, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+            return res.status(200).send("Login successful");
+        });
+    })(req, res, next);
+});
+
 
 app.get("/logout", (req, res) => {
     req.logout((err) => {
