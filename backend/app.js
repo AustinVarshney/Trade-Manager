@@ -52,6 +52,7 @@ app.use(cors({
 app.options('*', cors({
     origin: [dashboardUrl, frontendUrl],
     methods: "GET,POST,DELETE",
+    allowedHeaders: "Content-Type",
     credentials: true,
 }));
 
