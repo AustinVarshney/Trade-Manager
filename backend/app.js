@@ -345,7 +345,7 @@ app.get("/logout", (req, res) => {
                 return next(err);
             }
             res.clearCookie('connect.sid', { path: '/' }); // Clear the session cookie
-            res.redirect("http://localhost:5174/");
+            res.redirect(`${frontendUrl}`);
         });
     })
 });
