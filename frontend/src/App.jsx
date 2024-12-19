@@ -9,7 +9,6 @@ import Products from "./Pages/Products/Products"
 import Pricing from "./Pages/Pricing/Pricing"
 import Support from "./Pages/Support/Support"
 import Footer from "./Components/Footer/Footer"
-import Login from "./Pages/Login/Login"
 import Verification from "./Components/Verification/Verification"
 import links from "../environment"
 
@@ -17,7 +16,8 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8081');
+    const wsUrl = import.meta.env.REACT_APP_WS_URL || 'ws://localhost:8081';
+    const ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {
       console.log('Connected to WebSocket server');

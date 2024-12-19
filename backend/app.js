@@ -21,16 +21,20 @@ const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 8081 });
+const wsProtocol = process.env.NODE_ENV === "production" ? 'wss://' : 'ws://';
+const wsHost = process.env.WS_HOST || 'localhost'; // Use your deployed domain for production
+const wsPort = process.env.WS_PORT || 8081;
+
+const wss = new WebSocket.Server({ port: wsPort });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const backendUrl = process.env.NODE_ENV === "production" 
+const backendUrl = process.env.NODE_ENV === "production"
         ? ""
         : "http://localhost:8080";
 
-const dashboardUrl = process.env.NODE_ENV === "production" 
+const dashboardUrl = process.env.NODE_ENV === "production"
         ? ""
         : "http://localhost:5173";
 
@@ -130,25 +134,7 @@ wss.on('connection', (ws) => {
     ws.send(JSON.stringify({ message: 'Welcome to the WebSocket server!' }));
 });
 
-console.log('WebSocket server is running on ws://localhost:8081');
-
-const ws = new WebSocket('ws://localhost:8081');
-
-ws.onopen = () => {
-    console.log('Connected to WebSocket server for verification');
-
-    // Function to call after email verification
-    function onEmailVerified() {
-        ws.send(JSON.stringify({ verified: true }));
-    }
-
-    // Simulate email verification
-    onEmailVerified;
-};
-
-ws.onclose = () => {
-    console.log('Disconnected from WebSocket server');
-};
+console.log(`WebSocket server is running on ${wsProtocol}${wsHost}:${wsPort}`);
 
 function generateToken() {
     return crypto.randomBytes(32).toString('hex');
