@@ -31,15 +31,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const backendUrl = process.env.NODE_ENV === "production"
-        ? ""
+        ? "https://zerodha-project-backend.onrender.com"
         : "http://localhost:8080";
 
 const dashboardUrl = process.env.NODE_ENV === "production"
-        ? ""
+        ? "https://trade-manager-dashboard.vercel.app/"
         : "http://localhost:5173";
 
 const frontendUrl = process.env.NODE_ENV === "production" 
-        ? ""
+        ? "https://trade-manager-frontend.vercel.app/"
         : "http://localhost:5174";
 
 app.use(cors({
