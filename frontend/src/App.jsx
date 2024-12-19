@@ -11,6 +11,7 @@ import Support from "./Pages/Support/Support"
 import Footer from "./Components/Footer/Footer"
 import Login from "./Pages/Login/Login"
 import Verification from "./Components/Verification/Verification"
+import links from "../environment"
 
 function App() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function App() {
         const data = JSON.parse(event.data);
         console.log('Message from server:', data);
         if (data.redirect) {
-          window.location.href = "http://localhost:5173/";
+          window.location.href = `${links.dashboard}`;
         }
       } catch (error) {
         console.error('Error parsing message:', error);

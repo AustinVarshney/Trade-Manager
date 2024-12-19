@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import "./Position.css"
 // import { positions } from '../assets/assets'
-
 import axios from 'axios';
+import links from '../../environment';
 
 const Position = () => {
   let [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/allPositions").then((res) => {
+    axios.get(`${links.backend}/allPositions`).then((res) => {
       // console.log(res);
       setAllPositions(res.data);
     })

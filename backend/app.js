@@ -26,15 +26,27 @@ const wss = new WebSocket.Server({ port: 8081 });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const backendUrl = process.env.NODE_ENV === "production" 
+        ? ""
+        : "http://localhost:8080";
+
+const dashboardUrl = process.env.NODE_ENV === "production" 
+        ? ""
+        : "http://localhost:5173";
+
+const frontendUrl = process.env.NODE_ENV === "production" 
+        ? ""
+        : "http://localhost:5174";
+
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: [dashboardUrl, frontendUrl],
     methods: "GET,POST,DELETE",
     allowedHeaders: "Content-Type",
     credentials: true,
 }));
 
 app.options('*', cors({
-    origin: ["http://localhost:5173/", "http://localhost:5174/"],
+    origin: [dashboardUrl, frontendUrl],
     methods: "GET,POST,DELETE",
     credentials: true,
 }));
@@ -245,7 +257,7 @@ app.post("/signup", wrapAsync(async (req, res) => {
     const registeredUser = await User.register(newUser, password);
     console.log(registeredUser);
 
-    const verificationLink = `http://localhost:8080/verify-email?token=${token}`;
+    const verificationLink = `${backendUrl}/verify-email?token=${token}`;
     await sendVerificationEmail(email, verificationLink);
 
     // Log the user in immediately after signup
@@ -259,7 +271,7 @@ app.post("/signup", wrapAsync(async (req, res) => {
         res.cookie("user", username, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
 
         // Redirect to the verification page
-        res.redirect("http://localhost:5174/verification");
+        res.redirect(`${frontendUrl}/verification`);
     });
 }));
 
@@ -286,7 +298,7 @@ app.get('/verify-email', wrapAsync(async (req, res) => {
 }));
 
 app.get("/login", wrapAsync((req, res) => {
-    res.redirect("http://localhost:5173/login");
+    res.redirect(`${dashboardUrl}/login`);
 }));
 
 // app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }), wrapAsync(async (req, res) => {

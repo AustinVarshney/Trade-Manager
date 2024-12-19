@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./Order.css"
 import bookImg from "../../src/assets/EmptyBook.jpg"
 import axios from 'axios';
+import links from '../../environment';
 
 const Order = () => {
   let [allOrders, setAllOrders] = useState([]);
@@ -18,7 +19,7 @@ const Order = () => {
     //   }
     // }).catch(error => console.error('Error fetching orders:', error));
 
-    fetch('http://localhost:8080/allOrders', {
+    fetch(`${links.backend}/allOrders`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -40,7 +41,7 @@ const Order = () => {
   const handleDelete = async (id) => {
     const isConfirmed = window.confirm("Are you sure you want to delete this order?");
     if (isConfirmed) {
-      const response = await fetch(`http://localhost:8080/deleteOrder/${id}`, {
+      const response = await fetch(`${links.backend}/deleteOrder/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {

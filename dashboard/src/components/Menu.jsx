@@ -12,6 +12,7 @@ import KeyboardCommandKeyIcon from '@mui/icons-material/KeyboardCommandKey';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Cookies from 'js-cookie';
+import links from '../../environment';
 
 const Menu = () => {
   let [user, setUser] = useState("User");
@@ -97,7 +98,7 @@ const Menu = () => {
             <li><Link><ExploreIcon style={{fontSize: "1.2rem"}}/>Tour Kite</Link></li>
             <li><Link><KeyboardCommandKeyIcon style={{fontSize: "1.2rem"}}/>Keyboard shortcuts</Link></li>
             <li><Link><LiveHelpIcon style={{fontSize: "1.2rem"}}/>User manual</Link></li>
-            <li><Link to="http://localhost:8080/logout"><LogoutIcon style={{fontSize: "1.2rem"}}/>Logout</Link></li>
+            <li><Link to={`${links.backend}/logout`}><LogoutIcon style={{fontSize: "1.2rem"}}/>Logout</Link></li>
           </ul>
         </div>
       </div>
@@ -124,7 +125,7 @@ const Menu = () => {
               <li><Link><ExploreIcon style={{fontSize: "1.2rem"}}/>Tour Kite</Link></li>
               <li><Link><KeyboardCommandKeyIcon style={{fontSize: "1.2rem"}}/>Keyboard shortcuts</Link></li>
               <li><Link><LiveHelpIcon style={{fontSize: "1.2rem"}}/>User manual</Link></li>
-              <li><Link to="http://localhost:8080/logout"><LogoutIcon style={{fontSize: "1.2rem"}}/>Logout</Link></li>
+              <li><Link to={`${links.backend}/logout`}><LogoutIcon style={{fontSize: "1.2rem"}}/>Logout</Link></li>
             </ul>
           </div>
         </div>

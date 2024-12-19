@@ -10,6 +10,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import links from '../../../environment';
 
 const HeroSignup = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -30,7 +31,7 @@ const HeroSignup = () => {
         <h3>
           Signup Now
         </h3>
-        <form action="http://localhost:8080/signup" method='POST'>
+        <form action={`${links.backend}/signup`} method='POST'>
           <Box className='SignupBox1'
             sx={{
               '& > :not(style)': { width: '80%' },

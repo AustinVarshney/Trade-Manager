@@ -3,6 +3,7 @@ import "./Holding.css"
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import VerticalGraph from "./VerticalGraph";
+import links from '../../environment';
 // import {holdings} from "../../src/assets/assets.js"
 
 import axios from 'axios';
@@ -42,7 +43,7 @@ const Holding = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8080/allHoldings").then((res) => {
+    axios.get(`${links.backend}/allHoldings`).then((res) => {
       setAllHoldings(res.data);
     })
   }, [])

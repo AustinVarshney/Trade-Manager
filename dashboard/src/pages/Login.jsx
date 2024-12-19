@@ -12,6 +12,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import links from '../../environment';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +27,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await fetch("http://localhost:8080/login", {
+            const response = await fetch(`${links.backend}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -42,7 +43,7 @@ const Login = () => {
             } else if (response.status === 200) {
                 toast.success("Login successful!");
                 setTimeout(() => {
-                    window.location.href = "http://localhost:5173/";
+                    window.location.href = `${links.dashboard}`;
                 }, 1500);
             } else {
                 toast.error("An unexpected error occurred. Please try again.");

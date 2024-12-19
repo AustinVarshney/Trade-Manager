@@ -3,6 +3,7 @@ import Draggable from "react-draggable";
 import "./Summary.css"
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import links from '../../environment';
 
 
 const Summary = ({ user, itemName, itemMode, isCancelBuyBtn, isCancelSellBtn, mediaCancelBuyBtn, mediaCancelSellBtn }) => {
@@ -25,7 +26,7 @@ const Summary = ({ user, itemName, itemMode, isCancelBuyBtn, isCancelSellBtn, me
 
     const data = { qty, price, itemName, itemMode };
 
-    fetch('http://localhost:8080/buyOrders', {
+    fetch(`${links.backend}/buyOrders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -54,7 +55,7 @@ const Summary = ({ user, itemName, itemMode, isCancelBuyBtn, isCancelSellBtn, me
 
     const data = { qty, price, itemName, itemMode };
 
-    fetch('http://localhost:8080/sellOrders', {
+    fetch(`${links.backend}/sellOrders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
