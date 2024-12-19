@@ -94,7 +94,7 @@ const sessionOptions = {
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        secure: false,
+        secure: isProduction,
         sameSite: isProduction ? 'none' : 'lax',
     }
 };
@@ -255,7 +255,7 @@ app.post("/signup", wrapAsync(async (req, res) => {
         }
 
         // Set the cookie for the logged-in user
-        res.cookie("user", username, { secure: false, sameSite: isProduction ? 'none' : 'lax' });
+        res.cookie("user", username, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
 
         // Redirect to the verification page
         res.redirect(`${frontendUrl}/verification`);
