@@ -16,7 +16,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const wsUrl = import.meta.env.REACT_APP_WS_URL || 'ws://localhost:8081';
+    const wsUrl = import.meta.env.VITE_APP_WS_URL || 'ws://localhost:8081';
     const ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {
