@@ -255,7 +255,12 @@ app.post("/signup", wrapAsync(async (req, res) => {
         }
 
         // Set the cookie for the logged-in user
-        res.cookie("user", username, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+        // res.cookie("user", username, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+        res.cookie("user", username, {
+            secure: isProduction,
+            sameSite: isProduction ? 'none' : 'lax',
+            domain: isProduction ? '.onrender.com' : "http://localhost:8080", // Use your domain in production
+        });
 
         // Redirect to the verification page
         res.redirect(`${frontendUrl}/verification`);
@@ -328,7 +333,14 @@ app.post("/login", (req, res, next) => {
 
             // Login successful
             let userData = user.username || "Guest";
-            res.cookie("user", userData, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+
+            // res.cookie("user", userData, { secure: isProduction, sameSite: isProduction ? 'none' : 'lax' });
+
+            res.cookie("user", userData, {
+                secure: isProduction,
+                sameSite: isProduction ? 'none' : 'lax',
+                domain: isProduction ? '.onrender.com' : "http://localhost:8080", // Use your domain in production
+            });
             return res.status(200).send("Login successful");
         });
     })(req, res, next);
