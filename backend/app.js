@@ -46,7 +46,7 @@ app.use(cors({
     origin: [dashboardUrl, frontendUrl],
     methods: "GET,POST,DELETE",
     allowedHeaders: "Content-Type",
-    domain: process.env.NODE_ENV === "production" ? ["trade-manager-dashboard.vercel.app", "trade-manager-frontend.vercel.app"] : undefined,
+    domain: process.env.NODE_ENV === "production" ? "vercel.com" : undefined,
     credentials: true,
 }));
 
@@ -54,7 +54,7 @@ app.options('*', cors({
     origin: [dashboardUrl, frontendUrl],
     methods: "GET,POST,DELETE",
     allowedHeaders: "Content-Type",
-    domain: process.env.NODE_ENV === "production" ? ["trade-manager-dashboard.vercel.app", "trade-manager-frontend.vercel.app"] : undefined,
+    domain: process.env.NODE_ENV === "production" ? "vercel.com" : undefined,
     credentials: true,
 }));
 
@@ -261,7 +261,7 @@ app.post("/signup", wrapAsync(async (req, res) => {
         res.cookie("user", username, {
             secure: isProduction,
             sameSite: isProduction ? 'none' : 'lax',
-            domain: isProduction ? 'trade-manager-dashboard.vercel.app' : undefined, // Use your domain in production
+            domain: isProduction ? 'vercel.app' : undefined, // Use your domain in production
         });
 
         // Redirect to the verification page
@@ -341,7 +341,7 @@ app.post("/login", (req, res, next) => {
             res.cookie("user", userData, {
                 secure: isProduction,
                 sameSite: isProduction ? 'none' : 'lax',
-                domain: isProduction ? 'trade-manager-dashboard.vercel.app' : undefined, // Use your domain in production
+                domain: isProduction ? 'vercel.app' : undefined, // Use your domain in production
             });
             return res.status(200).send("Login successful");
         });
