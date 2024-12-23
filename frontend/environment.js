@@ -1,4 +1,4 @@
-const isProd = false;
+const isProd = true;
 
 const links = {
     dashboard: isProd ? "https://trade-manager-dashboard.vercel.app/" : "http://localhost:5173",
