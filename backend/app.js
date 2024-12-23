@@ -181,7 +181,7 @@ app.get("/allPositions", wrapAsync(async (req, res) => {
     res.json(allPositions);
 }));
 
-app.get("/allOrders", isAuthenticated, wrapAsync(async (req, res) => {
+app.get("/allOrders", wrapAsync(async (req, res) => {
     const ownerId = req.user._id.toString();
 
     let allOrders = await Order.find({ owner: ownerId });
