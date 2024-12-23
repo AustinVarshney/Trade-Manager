@@ -181,11 +181,24 @@ app.get("/allPositions", wrapAsync(async (req, res) => {
     res.json(allPositions);
 }));
 
-app.get("/allOrders", wrapAsync(async (req, res) => {
-    const ownerId = req.user._id.toString();
+app.get("/allOrders", isAuthenticated, wrapAsync(async (req, res, next) => {
+    try {
+        if (!req.user) {
+            throw new Error("User not found in the session");
+        }
 
-    let allOrders = await Order.find({ owner: ownerId });
-    res.json(allOrders);
+        const ownerId = req.user._id.toString();
+        const allOrders = await Order.find({ owner: ownerId });
+
+        if (!allOrders) {
+            return res.status(404).json({ message: "No orders found" });
+        }
+
+        res.json(allOrders);
+    } catch (error) {
+        console.error("Error fetching orders:", error.message);
+        res.status(500).json({ error: error.message });
+    }
 }));
 
 app.post("/buyOrders", isAuthenticated, wrapAsync(async (req, res) => {      //Done
