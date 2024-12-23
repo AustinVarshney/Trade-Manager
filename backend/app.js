@@ -160,6 +160,13 @@ async function sendVerificationEmail(email, link) {
     });
 }
 
+function checkSession(req, res, next) {
+    if (!req.session || !req.session.userId) {
+        return res.status(401).json({ error: "User not found in the session" });
+    }
+    next(); // Proceed if the session exists
+}
+
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -181,7 +188,7 @@ app.get("/allPositions", wrapAsync(async (req, res) => {
     res.json(allPositions);
 }));
 
-app.get("/allOrders", wrapAsync(async (req, res, next) => {
+app.get("/allOrders",checkSession, wrapAsync(async (req, res, next) => {
     try {
         if (!req.user) {
             throw new Error("User not found in the session");
