@@ -46,7 +46,7 @@ app.use(cors({
     origin: [dashboardUrl, frontendUrl],
     methods: "GET,POST,DELETE",
     allowedHeaders: "Content-Type",
-    domain: process.env.NODE_ENV === "production" ? "vercel.com" : undefined,
+    // domain: process.env.NODE_ENV === "production" ? "vercel.com" : undefined,
     credentials: true,
 }));
 
@@ -54,7 +54,7 @@ app.options('*', cors({
     origin: [dashboardUrl, frontendUrl],
     methods: "GET,POST,DELETE",
     allowedHeaders: "Content-Type",
-    domain: process.env.NODE_ENV === "production" ? "vercel.com" : undefined,
+    // domain: process.env.NODE_ENV === "production" ? "vercel.com" : undefined,
     credentials: true,
 }));
 
