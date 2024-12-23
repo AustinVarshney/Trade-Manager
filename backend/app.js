@@ -181,7 +181,7 @@ app.get("/allPositions", wrapAsync(async (req, res) => {
     res.json(allPositions);
 }));
 
-app.get("/allOrders", isAuthenticated, wrapAsync(async (req, res, next) => {
+app.get("/allOrders", wrapAsync(async (req, res, next) => {
     try {
         if (!req.user) {
             throw new Error("User not found in the session");
