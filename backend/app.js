@@ -35,11 +35,11 @@ const backendUrl = process.env.NODE_ENV === "production"
         : "http://localhost:8080";
 
 const dashboardUrl = process.env.NODE_ENV === "production"
-        ? ""
+        ? "https://zerodha-project-dashboard-f0lb.onrender.com"
         : "http://localhost:5173";
 
 const frontendUrl = process.env.NODE_ENV === "production" 
-        ? ""
+        ? "https://zerodha-project-frontend-xysp.onrender.com"
         : "http://localhost:5174";
 
 app.use(cors({
